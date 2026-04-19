@@ -1,0 +1,55 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/hooks/pre-commit-lint.js\""
+          }
+        ],
+        "description": "Kiểm tra lint trước khi commit. Block nếu có lỗi lint.",
+        "id": "pre:bash:commit-lint"
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/hooks/review-reminder.js\""
+          }
+        ],
+        "description": "Nhắc nhở review trước khi push.",
+        "id": "pre:bash:review-reminder"
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/hooks/notify-wait.js\"",
+            "timeout": 5
+          }
+        ],
+        "description": "Gửi Windows notification khi Claude đang chờ phản hồi từ dev.",
+        "id": "stop:notify-wait"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/hooks/security-check.js\"",
+            "timeout": 10
+          }
+        ],
+        "description": "Kiểm tra bảo mật cơ bản sau khi file được tạo/sửa.",
+        "id": "post:edit:security-check"
+      }
+    ]
+  }
+}

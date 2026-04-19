@@ -1,0 +1,5 @@
+# Claude Code local settings (không distribute)
+.claude/
+
+# Session tracking (được tạo trong từng project)
+.project-name/

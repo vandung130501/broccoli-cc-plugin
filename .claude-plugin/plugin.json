@@ -1,0 +1,29 @@
+{
+  "name": "broccoli",
+  "version": "1.0.0",
+  "description": "Plugin Claude Code cho team dev Shopify/Web - hỗ trợ workflow phát triển tính năng và fix bug",
+  "author": {
+    "name": "vandung130501"
+  },
+  "homepage": "https://github.com/vandung130501/broccoli-cc-plugin",
+  "repository": "https://github.com/vandung130501/broccoli-cc-plugin",
+  "license": "MIT",
+  "keywords": [
+    "shopify",
+    "laravel",
+    "react",
+    "remix",
+    "workflow",
+    "bugfix",
+    "feature",
+    "review"
+  ],
+  "agents": [
+    "./agents/perf-reviewer.md",
+    "./agents/arch-reviewer.md",
+    "./agents/clean-reviewer.md",
+    "./agents/security-reviewer.md"
+  ],
+  "skills": ["./skills/"],
+  "hooks": "./hooks/hooks.json"
+}
